@@ -1,0 +1,94 @@
+﻿
+<!-- 这是 PCL2 的主页自定义文件。你可以通过修改这个文件来自定义 PCL2 主页：添加文本、打开网页、启动游戏，等等。
+     如果你倒腾这个文件把 PCL2 玩炸了，把这个文件直接删除就行了。
+     如果你懂得 WPF 的布局文件编写，你甚至可以做出不少的新玩意儿…… -->
+    
+<local:MyCard Title="这里是一堆按钮">
+    <StackPanel Margin="25,40,23,15">
+        <TextBlock Margin="0,0,0,4"
+                   Text="是我常用的一些按钮" />
+        <TextBlock Margin="0,0,0,4" Foreground="#8C7721"
+                   Text="可以十分快捷的找到" />
+        <TextBlock Margin="20,5,20,0" FontSize="20"
+                   Text="end" />
+    </StackPanel>
+</local:MyCard>
+
+
+            <!-- 红石灯（亮） -->
+        <local:MyListItem Margin="-5,15,-5,0" 
+		                  Logo="https://www.baidu.com/favicon.ico" Title="百度" Info="百度一下，你就知道！" 
+		                  EventType="打开网页" EventData="https://www.baidu.com/" Type="Clickable" />
+        <local:MyListItem Margin="-5,0,-5,8"
+		                  EventType="打开帮助" EventData="帮助/自定义帮助.json" Type="Clickable" />
+	    <local:MyListItem Margin="-5,15,-5,0" 
+		                  Logo="https://pic1.afdiancdn.com/user/df2dfad2960911e89c5252540025c377/avatar/31c78ee63d5dce8ac4848c837fb04204_w160_h160_s35.jpg?imageView2/1/w/120/h/120" Title="懒猫の主页" Info="用爱发电！" 
+		                  EventType="打开网页" EventData="https://afdian.net/a/LTCat" Type="Clickable" />	
+		<Image Width="30" Height="30" Margin="5,15,0,15" Source="pack://application:,,,/images/Blocks/RedstoneLampOff.png"/>
+            <!-- 红石灯（灭） -->
+		<local:MyListItem Margin="-5,15,-5,0" 
+		                  Logo="https://cn.bing.com/images" Title="必应" Info="有求必应" 
+		                  EventType="打开网页" EventData="https://cn.bing.com/" Type="Clickable" />
+		<TextBlock TextWrapping="Wrap" LineHeight="17"
+                   Text="注意：亮起=没bug，没亮=有bug"/>
+				   <Image Width="30" Height="30" Margin="5,15,0,15" Source="pack://application:,,,/images/Blocks/RedstoneLampOn.png"/>
+            <!-- 红石灯（亮） -->
+            <Image Width="30" Height="30" Margin="5,15,0,15" Source="pack://application:,,,/images/Blocks/RedstoneLampOff.png"/>
+            <!-- 红石灯（灭） -->
+							     
+						  <local:MyCard Title="启动游戏">
+
+    <StackPanel Margin="25,40,23,15">
+        <TextBlock TextWrapping="Wrap"
+                 Text="启动sever" />
+        <local:MyButton Margin="0,8,0,10" Width="250" Height="35"
+                 Text="启动 Minecraft 1.12.2的2bbt.xin" EventType="启动游戏" EventData="1.12.2-for-lite-opt|2b2t.xin" ToolTip="服务器 IP：2b2t.xin" />
+        <TextBlock TextWrapping="Wrap"
+                 Text="启动游戏：hypixel" />
+        <local:MyButton Margin="0,8,0,0" Width="250" Height="35"
+                 Text="使用 1.16.5进入 Hypixel" EventType="启动游戏" EventData="1.16.5|mc.hypixel.net" ToolTip="服务器 IP：mc.hypixel.net" />
+	    <TextBlock TextWrapping="Wrap"
+                 Text="启动游戏：1.12.2-for-lite-opt" />
+	    <local:MyButton Margin="0,8,0,0" Width="250" Height="35"
+                 Text="start 1.12.2-for-lite-opt1" EventType="启动游戏" EventData="1.12.2-for-lite-opt"/>
+
+    </StackPanel>
+</local:MyCard>
+<!-- 
+
+全部通用的属性：
+ - Width、Height：设置宽度与高度
+ - ToolTip：设置鼠标指向时的提示文本
+ - Foreground：调整前景颜色（十六进制字符串，例如 #FF010203 代表 ARGB 中的 255,1,2,3。前两位代表不透明度，FF 为全不透明，00 为全透明）
+ - Background：调整背景颜色（使用类似 Background="{DynamicResource ColorBrush5}" 的格式以调用 PCL2 当前的主题颜色，修改末尾的数字编号以改变颜色浓度）
+ - Margin：调整外边距（格式为 左,上,右,下。例如 Margin="0,0,0,2" 即为 2 单位的下边距）
+ - HorizontalAlignment：设置对齐方式（Left、Center、Right）
+
+TextBlock（纯文本）：
+ - Text：设置显示的文本（如果要使用引号等特殊字符，自行百度 XAML 转义）
+ - TextWrapping：开启自动换行
+ - FontSize：设置字号
+ 
+Image（图片）：
+ - Source：要显示的图片的网址
+
+local:MyHint（提示条）：
+ - Text：设置显示的文本（&#xA; 代表换行）
+ - IsWarn：设置为 True 代表警告样式，False 代表提示样式
+ 
+local:MyButton（按钮）：
+ - Text：设置显示的文本
+ - Padding：设置内边距，格式与 Margin 一致
+ - ColorType：设置颜色主题（Highlight 为当前启动器的主题颜色，Red 为红色，默认为黑色）
+ - EventType、EventData：触发特定事件
+ 
+local:MyTextButton（文本按钮）：
+ - Text：设置显示的文本
+ - EventType、EventData：触发特定事件
+ 
+local:MyCard（卡片）：
+ - Title：设置显示的标题文本
+ - CanSwap：这张卡片是否可以折叠，True 为是，False 为否
+ - IsSwaped：这张卡片是否默认折叠，要求 CanSwap 必须为 True
+
+-->
